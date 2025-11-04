@@ -568,6 +568,15 @@ html {
   background-color: var(--bg-card);
 }
 
+/* Pill text gradient - White to Dark Gray */
+.pill-text-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 35%, #3B3B3B 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 /* Responsive typography */
 @media (max-width: 768px) {
   .text-heading {

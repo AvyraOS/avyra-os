@@ -315,12 +315,12 @@ const Hero = () => {
                 <div 
                   className="absolute inset-0 p-[2px] rounded-lg"
                   style={{
-                    background: "radial-gradient(50% 20.7% at 50% 100%, #C6FFFF 0%, rgba(198, 255, 255, 0.00) 100%)"
+                    background: "radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)"
                   }}
                 >
                   {/* Button Content */}
-                  <div className="w-full h-full bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] text-[#000000] rounded-lg flex items-center justify-center text-base font-medium font-inter transition-all duration-300 hover:opacity-90">
-                    <span>Book Call</span>
+                  <div className="w-full h-full bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] rounded-lg flex items-center justify-center text-base font-medium font-inter transition-all duration-300 hover:opacity-90">
+                    <span>Free Assessment</span>
                     <svg 
                       className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" 
                       fill="currentColor" 
@@ -341,12 +341,12 @@ const Hero = () => {
         {/* Top Gradient - native CSS version, hanging off top */}
         <div className="TopGradientBg absolute -top-[241px] left-1/2 transform -translate-x-1/2 w-[381.01px] h-[382px] opacity-40 rounded-br-md blur-[132.70px]"
           style={{
-            background: "radial-gradient(circle, #89FFFF 0%, rgba(255,255,255,0.6) 62%, rgba(255,255,255,0.1) 100%)"
+            background: "radial-gradient(circle, #f3f3f3 0%, rgba(255,255,255,0.6) 62%, rgba(255,255,255,0.1) 100%)"
           }} />
         {/* Bottom Gradient - native CSS version, hanging off bottom */}
         <div className="BottomGradientBg absolute -bottom-[241px] left-1/2 transform -translate-x-1/2 w-[481.01px] h-[342px] opacity-40 rounded-tl-md blur-[132.70px]"
           style={{
-            background: "radial-gradient(circle, #18E0E0 0%, #18E0E0 42%, rgba(255,255,255,0.1) 100%)"
+            background: "radial-gradient(circle, #f3f3f3 0%, #ffffff 42%, rgba(255,255,255,0.1) 100%)"
           }} />
 
         {/* Client Logos Animation - At background level */}
@@ -401,17 +401,11 @@ const Hero = () => {
         <div className="mb-3 sm:mb-4 md:mb-6 flex justify-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[24px] bg-[#1b1c20]">
             {/* Gradient dot */}
-            <div className="w-[6.9px] h-[6.9px] rounded-full bg-gradient-to-b from-[#89FFFF] to-[#00D7D7]"></div>
+            <div className="w-[6.9px] h-[6.9px] rounded-full bg-gradient-to-b from-[#FFFFFF] to-[#3B3B3B]"></div>
             <span
-              className="font-inter font-medium text-[14px] leading-[22px] tracking-[-0.14px]"
-              style={{
-                background: 'linear-gradient(180deg, #89FFFF 0%, #00D7D7 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
+              className="font-inter font-medium text-[14px] leading-[22px] tracking-[-0.14px] pill-text-gradient"
             >
-              DESIGN PARTNER FOR FOUNDERS
+              YOUR OPERATING SYSTEM FOR GROWTH
             </span>
           </div>
         </div>
@@ -435,8 +429,8 @@ const Hero = () => {
               }}
               className="text-center text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5rem] font-medium leading-[2.25rem] sm:leading-[3rem] md:leading-[4rem] lg:leading-[5rem] xl:leading-[5.5rem] tracking-[-0.04rem] sm:tracking-[-0.055rem] md:tracking-[-0.07rem] lg:tracking-[-0.09rem] xl:tracking-[-0.11rem] capitalize max-w-full"
             >
-              World Class Designs.<br />
-              Delivered in 48 Hours.
+               Feeling Trapped By<br />
+               your business?
             </h1>
           </div>
 
@@ -444,7 +438,7 @@ const Hero = () => {
           <p
             className="w-full max-w-[20rem] sm:max-w-[400px] md:max-w-[506px] mx-auto text-[#D5DBE6] text-center text-[1rem] sm:text-sm md:text-base font-normal font-inter leading-[1.425rem] sm:leading-[22px] md:leading-[25.6px] tracking-[-0.015rem] sm:tracking-[-0.28px] md:tracking-[-0.32px] mb-[1rem] sm:mb-6 md:mb-8 sm:px-4"
           >
-            Get world-class designs, delivered in as little as 48 hours. Forget the hiring headaches.
+            Take the quick 3 minute freedom founder assessment to see whats holding back and how to fix it.
           </p>
           {/* Button Container with Animated Border Glow */}
           <div className="relative inline-block mb-8 group">
@@ -461,14 +455,14 @@ const Hero = () => {
             <div
               className="relative z-10 p-[2px] rounded-lg h-[50px] overflow-hidden"
               style={{
-                background: "radial-gradient(50% 20.7% at 50% 100%, #C6FFFF 0%, rgba(198, 255, 255, 0.00) 100%)"
+                background: "radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)"
               }}
             >
               <Link
                 href="/calendar"
-                className="relative z-50 inline-flex items-center justify-center bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 cursor-pointer h-[46px]"
+                className="relative z-50 inline-flex items-center justify-center bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 cursor-pointer h-[46px]"
               >
-                <span>Book My Dream Discovery Call</span>
+                <span>Start My Free Assessment</span>
                 <svg
                   className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
                   fill="currentColor"

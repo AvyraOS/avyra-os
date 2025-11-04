@@ -8,10 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from '@/components/landing/navbar';
 import Hero from '@/components/landing/hero';
 import FounderQuote from '@/components/landing/founder-quote';
-import CreativeTeam from '@/components/landing/creative-team';
-import Services from '@/components/landing/services';
-import HowItWorks from '@/components/landing/how-it-works';
-import Pricing from '@/components/landing/pricing';
+import TrustedByVisionaries from '@/components/landing/trusted-by-visionaries';
+import FoundersCircle from '@/components/landing/founders-circle';
+import Ecosystem from '@/components/landing/ecosystem';
+import FoundersByFounders from '@/components/landing/founders-by-founders';
 import TrustedBy from '@/components/landing/trusted-by';
 import ScaleSolutions from '@/components/landing/scale-solutions';
 import FAQ from '@/components/landing/faq';
@@ -132,10 +132,10 @@ export default function Home() {
       <div>
         <Hero />
         <FounderQuote />
-        <CreativeTeam />
-        <Services />
-        <HowItWorks />
-        <Pricing />
+        <TrustedByVisionaries />
+        <FoundersCircle />
+        <Ecosystem />
+        <FoundersByFounders />
         <TrustedBy />
         <ScaleSolutions />
         <FAQ />
