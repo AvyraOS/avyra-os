@@ -1,27 +1,27 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Book Your Dream Discovery Call | Avyra Design Studio',
-  description: 'Ready to turn your vision into stunning reality? Let Avyra handle all your design challenges so you can focus on building your dream.',
+  title: 'Schedule Your Discovery Call | Avyra OS',
+  description: 'Ready to scale your business on autopilot? Book a call to discover how the Founder Freedom System can help you reclaim 20+ hours weekly.',
   keywords: [
-    'design studio',
-    'branding',
-    'website design',
-    'UI/UX design',
-    'design consultation',
-    'founder design partner',
-    'premium design',
-    'design services'
+    'founder freedom',
+    'business automation',
+    'AI agents',
+    'scale business',
+    'founder systems',
+    'business operating system',
+    'productivity',
+    'automation'
   ],
   openGraph: {
-    title: 'Book Your Dream Discovery Call | Avyra Design Studio',
-    description: 'Ready to turn your vision into stunning reality? Let Avyra handle all your design challenges so you can focus on building your dream.',
+    title: 'Schedule Your Discovery Call | Avyra OS',
+    description: 'Ready to scale your business on autopilot? Book a call to discover how the Founder Freedom System can help you reclaim 20+ hours weekly.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book Your Dream Discovery Call | Avyra Design Studio',
-    description: 'Ready to turn your vision into stunning reality? Let Avyra handle all your design challenges.',
+    title: 'Schedule Your Discovery Call | Avyra OS',
+    description: 'Ready to scale your business on autopilot? Book a call to discover how the Founder Freedom System can help you reclaim 20+ hours weekly.',
   },
 };
 

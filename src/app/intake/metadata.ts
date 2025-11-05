@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Application Form',
-  description: 'Submit your application to work with Dreamflow Designs, a boutique design agency specializing in website design, UI/UX, and brand identity.',
+  title: 'Free Assessment | Avyra OS',
+  description: 'Get your personalized Freedom Blueprint. Discover how to scale your business on 80% autopilot with the Founder Freedom System.',
   openGraph: {
-    title: 'Application Form | Dreamflow Designs',
-    description: 'Submit your application to work with Dreamflow Designs, a boutique design agency specializing in website design, UI/UX, and brand identity.'
+    title: 'Free Assessment | Avyra OS',
+    description: 'Get your personalized Freedom Blueprint. Discover how to scale your business on 80% autopilot with the Founder Freedom System.'
   },
   twitter: {
-    title: 'Application Form | Dreamflow Designs',
-    description: 'Submit your application to work with Dreamflow Designs, a boutique design agency specializing in website design, UI/UX, and brand identity.'
+    title: 'Free Assessment | Avyra OS',
+    description: 'Get your personalized Freedom Blueprint. Discover how to scale your business on 80% autopilot with the Founder Freedom System.'
   }
 }; 

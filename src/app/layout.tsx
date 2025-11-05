@@ -25,25 +25,25 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Avyra Studio | Design Partner for Founders",
-  description: "Get world-class designs, delivered in as little as 48 hours. Forget the hiring headaches.",
+  title: "Avyra OS | Build a $1M+ Business on 80% Autopilot",
+  description: "The Founder Freedom System. Scale your business with AI agents, proven systems, and an elite community of founders. Reclaim 20+ hours weekly.",
   openGraph: {
-    title: 'Avyra Studio | Design Partner for Founders',
-    description: 'Get world-class designs, delivered in as little as 48 hours. Forget the hiring headaches.',
+    title: 'Avyra OS | Build a $1M+ Business on 80% Autopilot',
+    description: 'The Founder Freedom System. Scale your business with AI agents, proven systems, and an elite community of founders. Reclaim 20+ hours weekly.',
     type: 'website',
     images: [
       {
         url: '/images/Thumbnail.png',
         width: 1200,
         height: 630,
-        alt: 'Avyra Studio - Design Partner for Founders',
+        alt: 'Avyra OS - Build a $1M+ Business on 80% Autopilot',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Avyra Studio | Design Partner for Founders',
-    description: 'Get world-class designs, delivered in as little as 48 hours. Forget the hiring headaches.',
+    title: 'Avyra OS | Build a $1M+ Business on 80% Autopilot',
+    description: 'The Founder Freedom System. Scale your business with AI agents, proven systems, and an elite community of founders. Reclaim 20+ hours weekly.',
     images: ['/images/Thumbnail.png'],
   },
   icons: {

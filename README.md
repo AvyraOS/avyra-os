@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Avyra OS
+
+The Founder Freedom System - Build a $1M+ Business on 80% Autopilot.
+
+This is a [Next.js](https://nextjs.org) project for Avyra OS, empowering founders to scale their businesses with AI agents, proven systems, and an elite community.
 
 ## Getting Started
 
