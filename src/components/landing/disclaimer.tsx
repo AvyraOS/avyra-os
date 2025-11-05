@@ -20,7 +20,7 @@ export default function Disclaimer() {
           {/* Disclaimer Text */}
           <div className="flex flex-col gap-6 text-center">
             <p className="font-inter text-[16px] md:text-[18px] leading-[1.6] text-[#d5dbe6] max-w-[1100px]">
-              The stories you've seen are real. The results are earned. Every founder's journey is different ~ and your success depends on your own execution and consistency.
+              The stories you&apos;ve seen are real. The results are earned. Every founder&apos;s journey is different ~ and your success depends on your own execution and consistency.
             </p>
             
             <p className="font-inter text-[16px] md:text-[18px] leading-[1.6] text-[#d5dbe6] max-w-[1100px]">
