@@ -52,13 +52,15 @@ const Footer = () => {
         {/* Main Content */}
         <div className="text-center mb-16 lg:mb-20">
           
-          {/* Pill with faded lines */}
-          <div className="flex items-center justify-center gap-5 mb-6">
-            <div className="h-px w-[69px] bg-gradient-to-r from-[#04070d] to-[#ffffff] opacity-50" />
-            <div className="text-[#d5dbe6] text-[14px] font-medium font-inter leading-[22px] tracking-[-0.14px]">
-              READY TO SCALE
+          {/* Pill */}
+          <div className="flex items-center justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-[24px] bg-[#1b1c20]">
+              {/* Gradient dot */}
+              <div className="w-[6.9px] h-[6.9px] rounded-full bg-gradient-to-b from-[#FFFFFF] to-[#3B3B3B] shadow-[0px_1.15px_18.4px_0px_inset_rgba(255,255,255,0.12),0px_1.15px_1.15px_0px_inset_rgba(255,255,255,0.09)]"></div>
+              <span className="font-inter font-medium text-[14px] leading-[22px] tracking-[-0.14px] pill-text-gradient uppercase">
+                FREE INSTANT PLAN IN 3 MINUTES
+              </span>
             </div>
-            <div className="h-px w-[69px] bg-gradient-to-l from-[#04070d] to-[#ffffff] opacity-50" />
           </div>
 
           {/* Main Title */}
@@ -79,10 +81,20 @@ const Footer = () => {
                   fontWeight: '500'
                 }}
               >
-                Your Creative Unfair {' '}
+                See How {' '}
               </span>
               <span className="font-instrument-serif italic font-normal">
-               Advantage
+                Free Your Business
+              </span>
+              <br />
+              <span 
+                style={{
+                  fontFamily: 'Inter',
+                  fontStyle: 'normal',
+                  fontWeight: '500'
+                }}
+              >
+                Really Is
               </span>
             </h2>
           </div>
@@ -90,7 +102,7 @@ const Footer = () => {
           {/* Subtitle */}
           <div className="max-w-2xl mx-auto mb-8">
             <p className="text-[#d5dbe6] text-[16px] leading-[25.6px] tracking-[-0.32px]">
-            Stop chasing freelancers. Start scaling with a creative partner built for founders.
+              It&apos;s time to scale on autopilot and reclaim your freedom.
             </p>
           </div>
 
@@ -110,7 +122,7 @@ const Footer = () => {
                   href="/calendar" 
                   className="relative z-50 inline-flex items-center justify-center bg-[#f8f9fa] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 cursor-pointer h-[46px]"
                 >
-                  <span>Book My Dream Discovery Call</span>
+                  <span>Start my free assessment</span>
                   <svg 
                     className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" 
                     fill="currentColor" 
@@ -159,14 +171,32 @@ const Footer = () => {
             
             {/* Copyright */}
             <p className="text-[#a6a6a6] text-[12px] leading-[20px] tracking-[-0.16px] mb-4">
-              @2025 Avyra Studio, All rights reserved.
+              @2025 Avyra OS, All rights reserved.
             </p>
             
             {/* Social Icons */}
             <div className="flex items-center gap-3">
+              {/* LinkedIn */}
+              <a 
+                href="https://linkedin.com/company/avyra" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
+              >
+                <Image
+                  src="/icons/linkedin-logo.svg"
+                  alt="LinkedIn"
+                  width={26}
+                  height={26}
+                  className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </a>
+              
               {/* X (Twitter) */}
               <a 
-                href="#" 
+                href="https://x.com/avyra" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
               >
                 <Image
@@ -178,42 +208,32 @@ const Footer = () => {
                 />
               </a>
               
-              {/* Dribbble */}
+              {/* YouTube */}
               <a 
-                href="#" 
+                href="https://youtube.com/@avyra" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
               >
                 <Image
-                  src="/icons/Dribbble.svg"
-                  alt="Dribbble"
+                  src="/icons/YouTube.svg"
+                  alt="YouTube"
                   width={22}
                   height={22}
                   className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </a>
               
-              {/* Instagram */}
+              {/* Skool */}
               <a 
-                href="#" 
+                href="https://skool.com/avyra" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
               >
                 <Image
-                  src="/icons/Instagram.svg"
-                  alt="Instagram"
-                  width={22}
-                  height={22}
-                  className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </a>
-              
-              {/* Figma */}
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
-              >
-                <Image
-                  src="/icons/Figma.svg"
-                  alt="Figma"
+                  src="/icons/Skool.svg"
+                  alt="Skool"
                   width={22}
                   height={22}
                   className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
@@ -223,11 +243,11 @@ const Footer = () => {
           </div>
 
           {/* Right Side - Desktop: Newsletter | Mobile: Newsletter first, then social */}
-          <div className="flex flex-col items-center lg:items-end max-w-md w-full lg:order-2">
+          <div className="flex flex-col items-center lg:items-start max-w-md w-full lg:order-2">
             {/* Newsletter Description */}
-            <div className="text-center lg:text-right mb-6">
+            <div className="text-center lg:text-left mb-6">
               <p className="text-[#d5dbe6] text-[12px] sm:text-[15px] lg:text-[16px] leading-[22px] sm:leading-[28px] lg:leading-[33.6px] tracking-[-0.28px]">
-                Get <span className="font-bold">weekly</span> insights on design & development strategies
+                Get <span className="font-bold">weekly</span> insights on Freedom Founder Systems
               </p>
             </div>
 
@@ -241,7 +261,7 @@ const Footer = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="What's your email?"
+                      placeholder="Enter your email"
                       className="flex-1 bg-transparent text-white text-[14px] font-medium px-[22px] py-[19px] placeholder-white outline-none focus:outline-none focus:ring-0 focus:border-0 focus:placeholder-opacity-70 transition-all duration-300 border-0 email-input-no-autofill"
                       required
                       style={{ 
@@ -280,7 +300,7 @@ const Footer = () => {
                       disabled={!isFormValid || isSubmitting}
                       className={`rounded-[9px] w-[42px] h-[42px] mr-[9px] flex items-center justify-center transition-all duration-300 ${
                         isFormValid && !isSubmitting
-                          ? 'bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] hover:opacity-90 cursor-pointer shadow-md'
+                          ? 'bg-gradient-to-b from-[#FFFFFF] to-[#E0E0E0] hover:opacity-90 cursor-pointer shadow-md'
                           : 'bg-[rgba(217,217,217,0.05)] hover:bg-[#e9ecef] disabled:opacity-50 disabled:cursor-not-allowed'
                       }`}
                     >
@@ -322,17 +342,35 @@ const Footer = () => {
                   </div>
                 </div>
                 <label htmlFor="privacy-checkbox" className="text-[#d5dbe6] text-[12px] leading-[20px] tracking-[-0.32px] cursor-pointer">
-                  I agree with <span className="text-white font-bold">Avyra&apos;s Terms of Service</span>
+                  I confirm that I have read <span className="text-white font-bold">Avyra&apos;s Privacy Policy</span>
                 </label>
               </div>
             </form>
           </div>
 
           {/* Mobile Only - Social Icons (when desktop logo section is hidden) */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center justify-center gap-3">
+            {/* LinkedIn */}
+            <a 
+              href="https://linkedin.com/company/avyra" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
+            >
+              <Image
+                src="/icons/linkedin-logo.svg"
+                alt="LinkedIn"
+                width={20}
+                height={20}
+                className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </a>
+            
             {/* X (Twitter) */}
             <a 
-              href="#" 
+              href="https://x.com/avyra" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
             >
               <Image
@@ -344,42 +382,32 @@ const Footer = () => {
               />
             </a>
             
-            {/* Dribbble */}
+            {/* YouTube */}
             <a 
-              href="#" 
+              href="https://youtube.com/@avyra" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
             >
               <Image
-                src="/icons/Dribbble.svg"
-                alt="Dribbble"
+                src="/icons/YouTube.svg"
+                alt="YouTube"
                 width={16}
                 height={16}
                 className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
               />
             </a>
             
-            {/* Instagram */}
+            {/* Skool */}
             <a 
-              href="#" 
+              href="https://skool.com/avyra" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
             >
               <Image
-                src="/icons/Instagram.svg"
-                alt="Instagram"
-                width={16}
-                height={16}
-                className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-              />
-            </a>
-            
-            {/* Figma */}
-            <a 
-              href="#" 
-              className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
-            >
-              <Image
-                src="/icons/Figma.svg"
-                alt="Figma"
+                src="/icons/Skool.svg"
+                alt="Skool"
                 width={16}
                 height={16}
                 className="opacity-60 group-hover:opacity-100 transition-opacity duration-300"

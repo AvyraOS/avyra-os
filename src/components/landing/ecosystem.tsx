@@ -73,7 +73,7 @@ const Ecosystem = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-[#080808] overflow-hidden py-24 px-4 md:px-8"
+      className="relative w-full bg-[#080808] overflow-hidden py-24 px-4 md:px-8"
       id="ecosystem"
       style={{
         backgroundImage: "url('/images/ecosystem-bg.png')",
@@ -100,10 +100,11 @@ const Ecosystem = () => {
 
         {/* Main Heading - centered */}
         <div className="ecosystem-heading w-full max-w-[490px] mx-auto mb-12">
-          <h2 className="text-center font-inter font-medium text-[32px] md:text-[40px] lg:text-[44px] leading-[1.2] tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-              Measure what matters. Multiply your <span className="font-instrument-serif italic">freedom.</span>
-            </span>
+          <h2 className="bg-clip-text text-center font-inter font-medium text-transparent text-[32px] md:text-[40px] lg:text-[44px] leading-[1.2] tracking-tight"
+            style={{
+              backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+            }}>
+            Measure what matters. Multiply your <span className="font-instrument-serif italic">freedom.</span>
           </h2>
         </div>
 
@@ -128,7 +129,7 @@ const Ecosystem = () => {
                 <div 
                   className="absolute w-[150px] h-[150px] rounded-full blur-[60px] pointer-events-none"
                   style={{
-                    left: '30px',
+                    left: '3e0px',
                     top: '10%',
                     transform: 'translateX(-50%)',
                     background: 'radial-gradient(circle, rgba(245, 198, 162, 0.6) 0%, rgba(245, 198, 162, 0) 70%)'
@@ -145,10 +146,11 @@ const Ecosystem = () => {
               
               {/* Text Content */}
               <div className="flex flex-col gap-[18px]">
-                <h3 className="font-inter font-medium text-[40px] leading-[50px] tracking-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-                    Time <span className="font-instrument-serif italic">Freedom</span>
-                  </span>
+                <h3 className="bg-clip-text font-inter font-medium text-transparent text-[40px] leading-[50px] tracking-tight"
+                  style={{
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+                  }}>
+                  Time <span className="font-instrument-serif italic">Freedom</span>
                 </h3>
                 <p className="font-inter text-[18px] leading-[1.4] text-[#c4c4c4]">
                   Automate 80%+ of repetitive work and reclaim your time
@@ -192,10 +194,11 @@ const Ecosystem = () => {
               
               {/* Text Content */}
               <div className="flex flex-col gap-[18px]">
-                <h3 className="font-inter font-medium text-[40px] leading-[50px] tracking-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-                    Creative <span className="font-instrument-serif italic">Freedom</span>
-                  </span>
+                <h3 className="bg-clip-text font-inter font-medium text-transparent text-[40px] leading-[50px] tracking-tight"
+                  style={{
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+                  }}>
+                  Creative <span className="font-instrument-serif italic">Freedom</span>
                 </h3>
                 <p className="font-inter text-[18px] leading-[1.4] text-[#c4c4c4]">
                   Build brands, products, and experiences that move people.
@@ -239,10 +242,11 @@ const Ecosystem = () => {
               
               {/* Text Content */}
               <div className="flex flex-col gap-[18px]">
-                <h3 className="font-inter font-medium text-[40px] leading-[50px] tracking-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-                    Clarity & <span className="font-instrument-serif italic">Control</span>
-                  </span>
+                <h3 className="bg-clip-text font-inter font-medium text-transparent text-[40px] leading-[50px] tracking-tight"
+                  style={{
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+                  }}>
+                  Clarity & <span className="font-instrument-serif italic">Control</span>
                 </h3>
                 <p className="font-inter text-[18px] leading-[1.4] text-[#c4c4c4]">
                   See every system, task, and metric in one clean dashboard.

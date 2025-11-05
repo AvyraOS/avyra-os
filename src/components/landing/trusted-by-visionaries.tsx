@@ -95,10 +95,11 @@ const TrustedByVisionaries = () => {
 
         {/* Main Heading - centered */}
         <div className="testimonial-heading w-full max-w-[527px] mx-auto mb-6">
-          <h2 className="text-center font-inter font-medium text-[32px] md:text-[40px] lg:text-[44px] leading-[1.2] tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-              Real founders. Real <span className="font-instrument-serif italic">results.</span>
-            </span>
+          <h2 className="bg-clip-text text-center font-inter font-medium text-transparent text-[32px] md:text-[40px] lg:text-[44px] leading-[1.2] tracking-tight"
+            style={{
+              backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+            }}>
+            Real founders. Real <span className="font-instrument-serif italic">results.</span>
           </h2>
         </div>
 
@@ -157,10 +158,11 @@ const TrustedByVisionaries = () => {
                 </div>
 
                 {/* Quote Text */}
-                <h3 className="font-inter font-medium text-[24px] md:text-[32px] leading-[1.4] tracking-[-0.96px] mb-6">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-                    &quot;Avyra gave me clarity I didn&apos;t know I needed.&quot;
-                  </span>
+                <h3 className="bg-clip-text font-inter font-medium text-transparent text-[24px] md:text-[32px] leading-[1.4] tracking-[-0.96px] mb-6"
+                  style={{
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+                  }}>
+                  &quot;Avyra gave me clarity I didn&apos;t know I needed.&quot;
                 </h3>
 
                 {/* Description */}
@@ -268,10 +270,11 @@ const TrustedByVisionaries = () => {
                 </div>
 
                 {/* Quote Text */}
-                <h3 className="font-inter font-medium text-[24px] md:text-[32px] leading-[1.4] tracking-[-0.96px] mb-6">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#d5dbe6] via-[#878b94] to-[#04070d]">
-                    &quot;Systems and design that scale with me.&quot;
-                  </span>
+                <h3 className="bg-clip-text font-inter font-medium text-transparent text-[24px] md:text-[32px] leading-[1.4] tracking-[-0.96px] mb-6"
+                  style={{
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 416 53\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"0\" height=\"100%\" width=\"100%\" fill=\"url(%23grad)\" opacity=\"1\"/><defs><radialGradient id=\"grad\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"10\" gradientTransform=\"matrix(41.184 0 0 4.558 208 26.5)\"><stop stop-color=\"rgba(213,219,230,1)\" offset=\"0.28387\"/><stop stop-color=\"rgba(161,166,176,1)\" offset=\"0.46291\"/><stop stop-color=\"rgba(135,140,149,1)\" offset=\"0.55242\"/><stop stop-color=\"rgba(109,113,122,1)\" offset=\"0.64194\"/><stop stop-color=\"rgba(82,87,94,1)\" offset=\"0.73145\"/><stop stop-color=\"rgba(56,60,67,1)\" offset=\"0.82097\"/><stop stop-color=\"rgba(30,34,40,1)\" offset=\"0.91048\"/><stop stop-color=\"rgba(17,20,27,1)\" offset=\"0.95524\"/><stop stop-color=\"rgba(4,7,13,1)\" offset=\"1\"/></radialGradient></defs></svg>')"
+                  }}>
+                  &quot;Systems and design that scale with me.&quot;
                 </h3>
 
                 {/* Description */}

@@ -12,9 +12,8 @@ import TrustedByVisionaries from '@/components/landing/trusted-by-visionaries';
 import FoundersCircle from '@/components/landing/founders-circle';
 import Ecosystem from '@/components/landing/ecosystem';
 import FoundersByFounders from '@/components/landing/founders-by-founders';
-import TrustedBy from '@/components/landing/trusted-by';
-import ScaleSolutions from '@/components/landing/scale-solutions';
-import FAQ from '@/components/landing/faq';
+import Testimonials from '@/components/landing/testimonials';
+import Disclaimer from '@/components/landing/disclaimer';
 import Footer from '@/components/landing/footer';
 
 
@@ -136,9 +135,8 @@ export default function Home() {
         <FoundersCircle />
         <Ecosystem />
         <FoundersByFounders />
-        <TrustedBy />
-        <ScaleSolutions />
-        <FAQ />
+        <Testimonials />
+        <Disclaimer />
         <Footer />
       </div>
     </main>

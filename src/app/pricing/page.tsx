@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Section Components
 import Navbar from '@/components/landing/navbar';
 import Pricing from '@/components/landing/pricing';
+import FAQ from '@/components/landing/faq';
 import Footer from '@/components/landing/footer';
 
 export default function PricingPage() {
@@ -44,6 +45,7 @@ export default function PricingPage() {
       {/* Main content sections */}
       <div>
         <Pricing />
+        <FAQ />
         <Footer />
       </div>
     </main>

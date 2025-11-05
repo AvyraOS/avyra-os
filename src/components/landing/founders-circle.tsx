@@ -68,7 +68,7 @@ const FoundersCircle = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-[#080808] overflow-hidden py-24 px-4 md:px-8"
+      className="relative w-full bg-[#080808] overflow-hidden pt-24 pb-24 px-4 md:px-8"
       id="founders-circle"
     >
       {/* Container to center content */}
