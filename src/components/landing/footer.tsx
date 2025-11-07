@@ -178,7 +178,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               {/* LinkedIn */}
               <a 
-                href="https://linkedin.com/company/avyra" 
+                href="https://www.linkedin.com/company/avyra-ai/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -194,7 +194,7 @@ const Footer = () => {
               
               {/* X (Twitter) */}
               <a 
-                href="https://x.com/avyra" 
+                href="https://x.com/AvyraAI" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -210,7 +210,7 @@ const Footer = () => {
               
               {/* YouTube */}
               <a 
-                href="https://youtube.com/@avyra" 
+                href="https://www.youtube.com/@AvyraAI" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -226,7 +226,7 @@ const Footer = () => {
               
               {/* Skool */}
               <a 
-                href="https://skool.com/avyra" 
+                href="https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -352,7 +352,7 @@ const Footer = () => {
           <div className="flex lg:hidden items-center justify-center gap-3">
             {/* LinkedIn */}
             <a 
-              href="https://linkedin.com/company/avyra" 
+              href="https://www.linkedin.com/company/avyra-ai/" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -368,7 +368,7 @@ const Footer = () => {
             
             {/* X (Twitter) */}
             <a 
-              href="https://x.com/avyra" 
+              href="https://x.com/AvyraAI" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -384,7 +384,7 @@ const Footer = () => {
             
             {/* YouTube */}
             <a 
-              href="https://youtube.com/@avyra" 
+              href="https://www.youtube.com/@AvyraAI" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"
@@ -400,7 +400,7 @@ const Footer = () => {
             
             {/* Skool */}
             <a 
-              href="https://skool.com/avyra" 
+              href="https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] transition-all duration-300 group"

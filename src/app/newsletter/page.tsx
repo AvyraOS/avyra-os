@@ -97,12 +97,42 @@ const Newsletter = () => {
     email: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Beehiv integration will be added here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      // Beehiv API Integration
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to subscribe');
+      }
+
+      setIsSubmitted(true);
+      // Reset form
+      setFormData({ name: '', email: '' });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      console.error('Subscription error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -200,11 +230,19 @@ const Newsletter = () => {
                 </div>
               </form>
 
+              {/* Error Message */}
+              {error && (
+                <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <p className="text-red-400 text-sm font-inter">{error}</p>
+                </div>
+              )}
+
               {/* CTA Button - Matching Hero Style */}
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className="group inline-flex items-center justify-center w-full lg:w-auto mb-6"
+                disabled={isLoading}
+                className="group inline-flex items-center justify-center w-full lg:w-auto mb-6 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <div className="relative w-full lg:w-auto inline-block">
                   {/* Button Background Container with Glow */}
@@ -215,14 +253,16 @@ const Newsletter = () => {
                     }}
                   >
                     <div className="relative z-50 inline-flex items-center justify-center bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] px-8 rounded-lg text-base font-semibold font-inter transition-all duration-300 hover:opacity-90 cursor-pointer h-[46px] w-full lg:w-auto">
-                      <span>Get The Systems</span>
-                      <svg
-                        className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
+                      <span>{isLoading ? 'Subscribing...' : 'Get The Systems'}</span>
+                      {!isLoading && (
+                        <svg
+                          className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      )}
                     </div>
                   </div>
                 </div>

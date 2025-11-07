@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { isMobileDevice, getScrollTriggerConfig } from '../../../lib/mobile-utils';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const FoundersCircle = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -152,23 +153,29 @@ const FoundersCircle = () => {
 
                 {/* CTA Button - Stacks on mobile, absolute on desktop */}
                 <div className="mt-auto md:absolute md:bottom-12 md:right-12">
-                  <div 
-                    className="p-[2px] rounded-lg h-[50px] overflow-hidden"
-                    style={{
-                      background: "radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)"
-                    }}
+                  <Link 
+                    href="https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <button className="bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 h-[46px] flex items-center justify-center group cursor-pointer w-full md:w-auto">
-                      <span>Join the Community</span>
-                      <svg
-                        className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </button>
-                  </div>
+                    <div 
+                      className="p-[2px] rounded-lg h-[50px] overflow-hidden"
+                      style={{
+                        background: "radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)"
+                      }}
+                    >
+                      <div className="bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 h-[46px] flex items-center justify-center group cursor-pointer w-full md:w-auto">
+                        <span>Join the Community</span>
+                        <svg
+                          className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
 
               </div>

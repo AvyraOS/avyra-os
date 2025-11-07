@@ -135,7 +135,9 @@ const MobileMenu = () => {
             </Link>
             
             <Link 
-              href="/#community" 
+              href="https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white text-2xl font-normal font-inter py-3 border-b border-white/5 hover:text-[#00D7D7] transition-colors"
               onClick={closeMobileMenu}
             >

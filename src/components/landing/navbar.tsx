@@ -133,47 +133,145 @@ const Navbar = () => {
 
                 {/* Dropdown Menu */}
                 {solutionsDropdownOpen && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[271px] bg-[#070707] rounded-[20px] shadow-[inset_0px_2px_1px_0px_rgba(207,231,255,0.20)] overflow-hidden z-50 py-4">
-                    {/* Light overlay */}
-                    <div className="absolute inset-0 opacity-10 bg-gradient-radial from-[#b8c7d9]/50 via-[#b8c7d9]/25 to-transparent" style={{
-                      background: 'radial-gradient(at 94% 8%, rgba(184, 199, 217, 0.5) 0%, rgba(184, 199, 217, 0) 100%)'
-                    }} />
-                    
-                    {/* Border */}
-                    <div className="absolute inset-0 rounded-[20px] border border-[#d8e7f2]/5" />
-                    
-                    {/* Menu Items Container */}
-                    <div className="relative z-10 px-[30px] space-y-2">
-                      {/* Avyra AI */}
-                      <Link 
-                        href="https://www.avyra.ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative block py-2 text-white text-lg font-normal font-inter leading-6 hover:text-white transition-colors duration-200"
-                        onClick={closeSolutionsDropdown}
-                      >
-                        {/* Hover background with white/gray tint */}
-                        <div className="absolute inset-0 -mx-3 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                        <span className="relative z-10">Avyra AI</span>
-                      </Link>
+                  <div className="absolute top-full left-[-48px] mt-4 w-[625px] h-[279px] bg-[rgba(8,8,8,0.85)] backdrop-blur-xl rounded-[24px] border border-[#46474e] z-50 flex">
+                    {/* Left Column - Solutions */}
+                    <div className="flex-1 px-8 py-8 flex flex-col gap-4">
+                      <p className="text-[#d9d9d9] text-[12px] font-medium font-inter tracking-[0.5px] uppercase">
+                        Solutions
+                      </p>
                       
-                      {/* Avyra Studio */}
-                      <Link 
-                        href="https://www.avyra.studio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative block py-2 text-white text-lg font-normal font-inter leading-6 hover:text-white transition-colors duration-200"
-                        onClick={closeSolutionsDropdown}
-                      >
-                        {/* Hover background with white/gray tint */}
-                        <div className="absolute inset-0 -mx-3 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                        <span className="relative z-10">Avyra Studio</span>
-                      </Link>
+                      <div className="flex flex-col gap-5">
+                        {/* AI Automations */}
+                        <Link 
+                          href="https://www.avyra.ai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex flex-col gap-0.5"
+                          onClick={closeSolutionsDropdown}
+                        >
+                          <div className="flex items-center gap-4 h-6">
+                            <div className="w-5 h-5 relative flex-shrink-0">
+                              <Image 
+                                src="/icons/ai-solutions.svg" 
+                                alt="AI Automations"
+                                width={20}
+                                height={20}
+                              />
+                            </div>
+                            <p className="text-[#c6c6c6] text-[16px] font-medium font-inter leading-6 group-hover:text-white transition-colors duration-200">
+                              AI Automations
+                            </p>
+                          </div>
+                          <div className="pl-9">
+                            <p className="text-[#4a4a4a] text-[14px] font-normal font-inter leading-6 group-hover:text-[#5a5a5a] transition-colors duration-200">
+                              Automate your business
+                            </p>
+                          </div>
+                        </Link>
+
+                        {/* Studio */}
+                        <Link 
+                          href="https://www.avyra.studio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex flex-col gap-0.5"
+                          onClick={closeSolutionsDropdown}
+                        >
+                          <div className="flex items-center gap-4 h-6">
+                            <div className="w-5 h-5 relative flex-shrink-0">
+                              <Image 
+                                src="/icons/studio-solutions.svg" 
+                                alt="Studio"
+                                width={20}
+                                height={20}
+                              />
+                            </div>
+                            <p className="text-[#c7c7c7] text-[16px] font-medium font-inter leading-6 group-hover:text-white transition-colors duration-200">
+                              Studio
+                            </p>
+                          </div>
+                          <div className="pl-9">
+                            <p className="text-[#4a4a4a] text-[14px] font-normal font-inter leading-6 group-hover:text-[#5a5a5a] transition-colors duration-200">
+                              Build your business
+                            </p>
+                          </div>
+                        </Link>
+
+                        {/* SaaS Product - Coming Soon */}
+                        <div className="flex flex-col gap-0.5 opacity-60">
+                          <div className="flex items-center gap-4 h-6">
+                            <div className="w-5 h-5 relative flex-shrink-0">
+                              <Image 
+                                src="/icons/saas-solutions.svg" 
+                                alt="SaaS Product"
+                                width={20}
+                                height={20}
+                              />
+                            </div>
+                            <p className="text-[#c5c5c5] text-[16px] font-medium font-inter leading-6">
+                              SaaS Product{' '}
+                              <span className="text-[9px] text-[rgba(197,197,197,0.4)]">(Coming Soon)</span>
+                            </p>
+                          </div>
+                          <div className="pl-9">
+                            <p className="text-[#4a4a4a] text-[14px] font-normal font-inter leading-6">
+                              Measure business health
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column - Founder Freedom Kit */}
+                    <div className="w-[280px] h-full bg-[rgba(0,0,0,0.7)] rounded-r-[23px] px-8 py-8 flex flex-col gap-4">
+                      <p className="text-[#9b9b9b] text-[12px] font-normal font-inter tracking-[0.5px] uppercase">
+                        Founder freedom kit
+                      </p>
                       
-                      {/* Avyra Command - Not clickable */}
-                      <div className="relative flex items-center justify-between py-2">
-                        <span className="text-white/50 text-lg font-normal font-inter leading-6">Avyra Command</span>
-                        <span className="px-1.5 py-[3px] bg-[#363636] rounded-[42px] text-white text-[8px] font-normal font-inter">Coming Soon</span>
+                      {/* Preview Image */}
+                      <div className="w-[215px] h-[94px] bg-[#565656] rounded-[7px]"></div>
+                      
+                      {/* Checklist */}
+                      <div className="flex flex-col gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 relative flex-shrink-0">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 1.6C4.464 1.6 1.6 4.464 1.6 8C1.6 11.536 4.464 14.4 8 14.4C11.536 14.4 14.4 11.536 14.4 8C14.4 4.464 11.536 1.6 8 1.6ZM6.8 11.2L3.2 7.6L4.256 6.544L6.8 9.08L11.744 4.136L12.8 5.2L6.8 11.2Z" fill="#919191"/>
+                            </svg>
+                          </div>
+                          <p className="text-[#727272] text-[14px] font-normal font-inter leading-6">
+                            Freedom Founder Blueprint
+                          </p>
+                        </div>
+                        <Link 
+                          href="/intake"
+                          className="flex items-center gap-2 group"
+                          onClick={closeSolutionsDropdown}
+                        >
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 1.6C4.464 1.6 1.6 4.464 1.6 8C1.6 11.536 4.464 14.4 8 14.4C11.536 14.4 14.4 11.536 14.4 8C14.4 4.464 11.536 1.6 8 1.6ZM6.8 11.2L3.2 7.6L4.256 6.544L6.8 9.08L11.744 4.136L12.8 5.2L6.8 11.2Z" fill="#919191"/>
+                            </svg>
+                          <p className="text-[#727272] text-[14px] font-normal font-inter leading-6 group-hover:text-[#9b9b9b] transition-colors duration-200">
+                            Access Blueprint
+                          </p>
+                          <svg 
+                            width="16" 
+                            height="16" 
+                            viewBox="0 0 16 16" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="flex-shrink-0"
+                          >
+                            <path 
+                              d="M8.5 3L13.5 8L8.5 13M13 8H3" 
+                              stroke="#727272" 
+                              strokeWidth="1.5" 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round"
+                              className="group-hover:stroke-[#9b9b9b] transition-colors duration-200"
+                            />
+                          </svg>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -192,7 +290,9 @@ const Navbar = () => {
                 Newsletter
               </Link>
               <Link 
-                href="#community" 
+                href="https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#d5dbe6] text-base font-normal font-inter leading-relaxed hover:text-white transition-colors duration-200 whitespace-nowrap"
               >
                 Community
