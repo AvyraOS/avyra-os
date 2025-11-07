@@ -288,11 +288,11 @@ const Hero = () => {
               Pricing
             </Link>
             <Link 
-              href="#blog" 
+              href="#newsletter" 
               className="text-white text-2xl font-normal font-inter py-3 border-b border-white/5 hover:text-[#00D7D7] transition-colors"
               onClick={closeMobileMenu}
             >
-              Blog
+              Newsletter
             </Link>
             <Link 
               href="#community" 

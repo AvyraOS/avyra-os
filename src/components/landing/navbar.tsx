@@ -188,29 +188,17 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              {/* <Link 
-                href="#results" 
-                className="text-[#d5dbe6] text-base font-normal font-inter leading-relaxed hover:text-white transition-colors duration-200 whitespace-nowrap"
-              >
-                Results
-              </Link> */}
               <Link 
-                href="#work" 
+                href="#resources" 
                 className="text-[#d5dbe6] text-base font-normal font-inter leading-relaxed hover:text-white transition-colors duration-200 whitespace-nowrap"
               >
-                Work
+                Resources
               </Link>
               <Link 
-                href="#pricing" 
+                href="#newsletter" 
                 className="text-[#d5dbe6] text-base font-normal font-inter leading-relaxed hover:text-white transition-colors duration-200 whitespace-nowrap"
               >
-                Pricing
-              </Link>
-              <Link 
-                href="#blog" 
-                className="text-[#d5dbe6] text-base font-normal font-inter leading-relaxed hover:text-white transition-colors duration-200 whitespace-nowrap"
-              >
-                Blog
+                Newsletter
               </Link>
               <Link 
                 href="#community" 
@@ -312,26 +300,19 @@ const Navbar = () => {
               <span className="text-white/50 text-2xl font-normal font-inter">Avyra Command</span>
               <span className="px-3 py-1 bg-[#363636] rounded-full text-white text-xs">Coming Soon</span>
             </div>
-            {/* <Link 
-              href="#results" 
-              className="text-white text-2xl font-normal font-inter py-3 border-b border-white/5 hover:text-[#f2c6a6] transition-colors"
-              onClick={closeMobileMenu}
-            >
-              Results
-            </Link> */}
             <Link 
-              href="#pricing" 
+              href="#resources" 
               className="text-white text-2xl font-normal font-inter py-3 border-b border-white/5 hover:text-[#00D7D7] transition-colors"
               onClick={closeMobileMenu}
             >
-              Pricing
+              Resources
             </Link>
             <Link 
-              href="#blog" 
+              href="#newsletter" 
               className="text-white text-2xl font-normal font-inter py-3 border-b border-white/5 hover:text-[#00D7D7] transition-colors"
               onClick={closeMobileMenu}
             >
-              Blog
+              Newsletter
             </Link>
             <Link 
               href="#community" 

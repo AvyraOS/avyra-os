@@ -15,75 +15,75 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Zac Barron",
+    name: "David Chen",
     role: "Founder",
     company: "Dexari",
-    testimonial: "Avyra transformed our brand identity in 48 hours. What would have taken weeks with freelancers.",
-    avatar: "/images/user-avatar-4.png"
+    testimonial: "The Freedom Blueprint changed everything for me. It showed me exactly where I was wasting time and gave me a clear roadmap. Now my business runs on autopilot while I work 20 hours less per week. I actually have time for my hobbies again.",
+    avatar: "/images/avatar1.png"
   },
   {
     id: 2,
-    name: "July Gratton",
+    name: "Michael Torres",
     role: "Founder",
     company: "Netty Worth",
-    testimonial: "As a design skeptic, I'm now convinced. Premium quality that rivals top agencies at startup speed.",
-    avatar: "/images/user-avatar-2.png"
+    testimonial: "Avyra OS framework automated 80% of my operations. I finally have time to focus on vision instead of tasks.",
+    avatar: "/images/avatar2.png"
   },
   {
     id: 3,
-    name: "Zahid Islam",
+    name: "James Wilson",
     role: "CEO & Founder",
     company: "Jutsu",
-    testimonial: "A total design game-changer. Our website conversion doubled after Avyra's redesign.",
-    avatar: "/images/user-avatar-3.png"
+    testimonial: "Revenue up 3x. Time with family up even more. That's the Avyra difference.",
+    avatar: "/images/avatar3.png"
   },
   {
     id: 4,
-    name: "Elliot Bream",
+    name: "Ryan Matthews",
     role: "Founder",
     company: "Try Livepeer",
-    testimonial: "From logo to landing page in one week. Avyra delivered world-class design without the agency drama.",
-    avatar: "/images/user-avatar-1.png"
+    testimonial: "From burnout to freedom in 60 days. The AI workflows handle everything — I just review and approve.",
+    avatar: "/images/avatar4.png"
   },
   {
     id: 5,
-    name: "Sarah Chen",
+    name: "Sarah Mitchell",
     role: "Founder",
     company: "CloudSync",
-    testimonial: "The systems Avyra built saved us 15+ hours weekly. Our team finally has room to breathe and grow.",
-    avatar: "/images/user-avatar-2.png"
+    testimonial: "The systems Avyra built saved us 25+ hours weekly. Our team finally has room to breathe and innovate. It's not just about efficiency — it's about reclaiming what matters most.",
+    avatar: "/images/avatar5.png"
   },
   {
     id: 6,
     name: "Marcus Reid",
     role: "CEO",
     company: "DataFlow",
-    testimonial: "Best investment we made this year. Avyra's automation gave us back our weekends.",
-    avatar: "/images/user-avatar-3.png"
+    testimonial: "Complete autonomy. Business runs itself while we scale.",
+    avatar: "/images/avatar6.png"
   },
   {
     id: 7,
-    name: "Nina Patel",
+    name: "Alex Thompson",
     role: "Founder",
     company: "GrowthLab",
-    testimonial: "Within 2 weeks, we automated 70% of our workflows. The ROI is undeniable.",
-    avatar: "/images/user-avatar-1.png"
+    testimonial: "From chaos to control in 30 days.",
+    avatar: "/images/avatar7.png"
   },
   {
     id: 8,
-    name: "Alex Thompson",
+    name: "Emma Rodriguez",
     role: "Founder",
     company: "Streamline",
-    testimonial: "Avyra didn't just build systems — they gave us clarity on what actually matters in our business.",
-    avatar: "/images/user-avatar-4.png"
+    testimonial: "Avyra didn't just build systems — they gave us clarity on what actually matters in our business. We went from drowning in operations to focusing purely on growth. The Command HUD alone is worth its weight in gold.",
+    avatar: "/images/avatar8.png"
   },
   {
     id: 9,
-    name: "Jordan Lee",
+    name: "Daniel Park",
     role: "CEO & Founder",
     company: "ScaleUp",
-    testimonial: "From chaos to control in 30 days. Avyra's approach to systems thinking changed everything.",
-    avatar: "/images/user-avatar-2.png"
+    testimonial: "Within 2 weeks, we automated 70% of our workflows. The ROI is undeniable — I'm finally living the founder dream..",
+    avatar: "/images/avatar1.png"
   }
 ];
 
@@ -208,6 +208,7 @@ export default function Testimonials() {
                         alt={testimonial.name}
                         width={42}
                         height={42}
+                        quality={100}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -267,6 +268,7 @@ export default function Testimonials() {
                             alt={testimonial.name}
                             width={42}
                             height={42}
+                            quality={100}
                             className="w-full h-full object-cover"
                           />
                         </div>
