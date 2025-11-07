@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Section Components
 import Navbar from '@/components/landing/navbar';
+import MobileMenu from '@/components/landing/mobile-menu';
 import Hero from '@/components/landing/hero';
 import FounderQuote from '@/components/landing/founder-quote';
 import TrustedByVisionaries from '@/components/landing/trusted-by-visionaries';
@@ -123,6 +124,8 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white">
 
+      {/* Mobile Navigation */}
+      <MobileMenu />
 
       {/* Main Navigation */}
       <Navbar />
