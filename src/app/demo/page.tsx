@@ -2,18 +2,17 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 
 type Segment = 'foundation-builder' | 'system-optimizer' | 'sovereign-founder';
 
-export default function Demo() {
+function DemoContent() {
   const searchParams = useSearchParams();
   // Convert capitalized segment to lowercase for internal use
   const segment = (searchParams.get('segment')?.toLowerCase() || 'foundation-builder') as Segment;
   const [isPlaying, setIsPlaying] = useState(false)
-  const videoRef = useState<HTMLVideoElement | null>(null)[0]
   
   // Get CTA content based on segment
   const getCTAContent = () => {
@@ -251,5 +250,17 @@ export default function Demo() {
         }
       `}</style>
     </div>
+  )
+}
+
+export default function Demo() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="text-white">Loading...</div>
+      </div>
+    }>
+      <DemoContent />
+    </Suspense>
   )
 } 
