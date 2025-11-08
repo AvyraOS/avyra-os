@@ -10,43 +10,109 @@ export default function LeadCaptureGate() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   
   const searchParams = useSearchParams();
   
+  // Function to capitalize first letter of each word
+  const capitalizeName = (value: string): string => {
+    return value
+      .split(' ')
+      .map(word => {
+        if (word.length === 0) return word;
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(' ');
+  };
+  
   // Parse form data from URL parameters
   const formData = {
-    revenue: searchParams.get('revenue') || '',
-    timeAudit: searchParams.get('timeAudit') || '',
-    growthBlocker: searchParams.get('growthBlocker') || '',
-    growthBlockerOther: searchParams.get('growthBlockerOther') || '',
-    urgency: searchParams.get('urgency') || '',
-    currentStack: searchParams.get('currentStack')?.split(',').filter(Boolean) || [],
-    currentStackOther: searchParams.get('currentStackOther') || ''
+    // 10 Yes/No Questions
+    q1_operations: searchParams.get('q1_operations') || '',
+    q2_documented_systems: searchParams.get('q2_documented_systems') || '',
+    q3_revenue_depends_time: searchParams.get('q3_revenue_depends_time') || '',
+    q4_team_delivers_without_you: searchParams.get('q4_team_delivers_without_you') || '',
+    q5_leave_two_weeks: searchParams.get('q5_leave_two_weeks') || '',
+    q6_review_metrics: searchParams.get('q6_review_metrics') || '',
+    q7_workflows_automated: searchParams.get('q7_workflows_automated') || '',
+    q8_block_time_strategy: searchParams.get('q8_block_time_strategy') || '',
+    q9_quarterly_goals: searchParams.get('q9_quarterly_goals') || '',
+    q10_brand_consistent: searchParams.get('q10_brand_consistent') || '',
+    
+    // 5 Qualifying Questions
+    current_stage: searchParams.get('current_stage') || '',
+    next_90_day_goal: searchParams.get('next_90_day_goal') || '',
+    biggest_obstacle: searchParams.get('biggest_obstacle') || '',
+    preferred_path: searchParams.get('preferred_path') || '',
+    anything_else: searchParams.get('anything_else') || ''
   };
+
+  // Calculate Freedom Score (0-100%)
+  const calculateScore = () => {
+    let score = 0;
+    const totalQuestions = 10;
+    
+    // Questions where "no" = good (add points)
+    const noIsGoodQuestions = ['q1_operations', 'q3_revenue_depends_time'];
+    
+    // Questions where "yes" = good (add points)
+    const yesIsGoodQuestions = [
+      'q2_documented_systems',
+      'q4_team_delivers_without_you',
+      'q5_leave_two_weeks',
+      'q6_review_metrics',
+      'q7_workflows_automated',
+      'q8_block_time_strategy',
+      'q9_quarterly_goals',
+      'q10_brand_consistent'
+    ];
+    
+    // Count positive answers
+    noIsGoodQuestions.forEach(q => {
+      if (formData[q as keyof typeof formData] === 'no') score++;
+    });
+    
+    yesIsGoodQuestions.forEach(q => {
+      if (formData[q as keyof typeof formData] === 'yes') score++;
+    });
+    
+    // Convert to percentage
+    return Math.round((score / totalQuestions) * 100);
+  };
+  
+  const freedomScore = calculateScore();
+  
+  // Determine segment based on score
+  const getSegment = (score: number): string => {
+    if (score >= 75) return 'Sovereign-Founder';
+    if (score >= 40) return 'System-Optimizer';
+    return 'Foundation-Builder';
+  };
+  
+  const segment = getSegment(freedomScore);
 
   // Redirect to intake if no form data
   useEffect(() => {
-    if (!formData.revenue || !formData.timeAudit || !formData.growthBlocker) {
+    // Check if at least some yes/no questions are answered
+    const hasAnswers = formData.q1_operations || formData.q2_documented_systems || formData.q3_revenue_depends_time;
+    if (!hasAnswers) {
       window.location.href = '/intake';
     }
-  }, [formData.revenue, formData.timeAudit, formData.growthBlocker]);
+  }, [formData.q1_operations, formData.q2_documented_systems, formData.q3_revenue_depends_time]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setAttemptedSubmit(true);
     
     if (!name.trim() || !email.trim()) {
-      setError('Please enter both your name and email');
       return;
     }
 
     if (!email.includes('@')) {
-      setError('Please enter a valid email address');
       return;
     }
 
     setIsSubmitting(true);
-    setError('');
 
     try {
       // NOW submit to Asana with complete data including contact info
@@ -63,26 +129,23 @@ export default function LeadCaptureGate() {
       });
 
       if (response.ok) {
-        // Redirect to results with complete data
+        // Redirect to results with score and segment
         const queryParams = new URLSearchParams({
-          revenue: formData.revenue,
-          timeAudit: formData.timeAudit,
-          growthBlocker: formData.growthBlocker,
-          growthBlockerOther: formData.growthBlockerOther || '',
-          urgency: formData.urgency || '',
-          currentStack: formData.currentStack.join(','),
-          currentStackOther: formData.currentStackOther || '',
+          score: String(freedomScore),
+          segment: segment,
           name: name.trim(),
           email: email.trim()
         });
         
         window.location.href = `/results?${queryParams.toString()}`;
       } else {
+        // Log error but don't show to user - just keep button enabled
         const errorData = await response.json();
-        setError(errorData.error || 'Something went wrong. Please try again.');
+        console.error('Submit error:', errorData);
       }
-    } catch {
-      setError('Network error. Please check your connection and try again.');
+    } catch (error) {
+      // Log error but don't show to user - just keep button enabled
+      console.error('Network error:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -107,13 +170,21 @@ export default function LeadCaptureGate() {
       <div className="absolute top-[4%] left-[4%] z-[2000]">
         <Link 
           href={`/intake?${new URLSearchParams({
-            revenue: formData.revenue,
-            timeAudit: formData.timeAudit,
-            growthBlocker: formData.growthBlocker,
-            growthBlockerOther: formData.growthBlockerOther || '',
-            urgency: formData.urgency || '',
-            currentStack: formData.currentStack.join(','),
-            currentStackOther: formData.currentStackOther || ''
+            q1_operations: formData.q1_operations,
+            q2_documented_systems: formData.q2_documented_systems,
+            q3_revenue_depends_time: formData.q3_revenue_depends_time,
+            q4_team_delivers_without_you: formData.q4_team_delivers_without_you,
+            q5_leave_two_weeks: formData.q5_leave_two_weeks,
+            q6_review_metrics: formData.q6_review_metrics,
+            q7_workflows_automated: formData.q7_workflows_automated,
+            q8_block_time_strategy: formData.q8_block_time_strategy,
+            q9_quarterly_goals: formData.q9_quarterly_goals,
+            q10_brand_consistent: formData.q10_brand_consistent,
+            current_stage: formData.current_stage,
+            next_90_day_goal: formData.next_90_day_goal,
+            biggest_obstacle: formData.biggest_obstacle,
+            preferred_path: formData.preferred_path,
+            anything_else: formData.anything_else
           }).toString()}`}
           className="bg-transparent border border-[#242424] rounded-full p-1.5 md:p-3 text-white cursor-pointer hover:bg-white/5 transition-colors flex justify-center items-center"
         >
@@ -187,7 +258,7 @@ export default function LeadCaptureGate() {
             <div className="flex flex-col gap-4 md:gap-6 items-start">
               <div className="flex gap-2 items-center">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={20} 
                   height={20}
@@ -199,7 +270,7 @@ export default function LeadCaptureGate() {
               </div>
               <div className="flex gap-2 items-center">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={20} 
                   height={20}
@@ -213,7 +284,7 @@ export default function LeadCaptureGate() {
               {/* Mobile: Show all 4 items in single column */}
               <div className="flex gap-2 items-center md:hidden">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={20} 
                   height={20}
@@ -224,7 +295,7 @@ export default function LeadCaptureGate() {
               </div>
               <div className="flex gap-2 items-center md:hidden">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={20} 
                   height={20}
@@ -239,7 +310,7 @@ export default function LeadCaptureGate() {
             <div className="hidden md:flex flex-col gap-6 items-start">
               <div className="flex gap-2 items-center">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={24} 
                   height={24}
@@ -250,7 +321,7 @@ export default function LeadCaptureGate() {
               </div>
               <div className="flex gap-2 items-center">
                 <Image 
-                  src="/icons/checkmark.svg" 
+                  src="/icons/white-checkmark.svg" 
                   alt="Checkmark" 
                   width={24} 
                   height={24}
@@ -266,6 +337,7 @@ export default function LeadCaptureGate() {
         {/* Form */}
         <motion.form 
           onSubmit={handleSubmit}
+          noValidate
           className="lead-capture-form space-y-3 md:space-y-4 w-full max-w-[804px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -273,137 +345,118 @@ export default function LeadCaptureGate() {
         >
           
           {/* Email Input */}
-          <div className="bg-[rgba(255,255,255,0.05)] p-1 rounded-[12px]">
-            <div className="bg-[rgba(146,146,146,0.06)] flex items-center justify-between pl-4 md:pl-6 pr-[9px] py-[9px] rounded-[10px]">
-              <input
-                type="email"
-                placeholder="Enter your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent text-white text-[12px] md:text-[14px] font-medium tracking-[-0.16px] focus:outline-none flex-1 placeholder:text-gray-400"
-                autoComplete="email"
-                autoFocus
-                required
-              />
-              <div className="bg-[rgba(217,217,217,0.05)] p-[8px] md:p-[10px] rounded-[9px] w-[36px] h-[36px] md:w-[42px] md:h-[42px] flex items-center justify-center">
-                <svg width="18" height="18" className="md:w-[22px] md:h-[22px]" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
+          <div className="relative">
+            <input
+              type="email"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-[#1b1c20] border border-[#121212] rounded-[10px] px-6 py-4 text-white text-sm font-medium font-inter tracking-[-0.16px] placeholder:text-gray-400 focus:outline-none focus:border-[#3a3a3a] transition-all"
+              autoComplete="email"
+              autoFocus
+            />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-[34px] h-[34px] bg-[rgba(217,217,217,0.05)] rounded-[7.286px] flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 4.5H15C15.4125 4.5 15.75 4.8375 15.75 5.25V12.75C15.75 13.1625 15.4125 13.5 15 13.5H3C2.5875 13.5 2.25 13.1625 2.25 12.75V5.25C2.25 4.8375 2.5875 4.5 3 4.5Z" fill="white"/>
+                <path d="M15.75 5.25L9 9.75L2.25 5.25" stroke="#1b1c20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
           </div>
           
           {/* Name Input */}
-          <div className="bg-[rgba(255,255,255,0.05)] p-1 rounded-[12px]">
-            <div className="bg-[rgba(146,146,146,0.06)] flex items-center justify-between pl-4 md:pl-6 pr-[9px] py-[9px] rounded-[10px]">
-              <input
-                type="text"
-                placeholder="Enter your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="bg-transparent text-white text-[12px] md:text-[14px] font-medium tracking-[-0.16px] focus:outline-none flex-1 placeholder:text-gray-400"
-                autoComplete="name"
-                required
-              />
-              <div className="bg-[rgba(217,217,217,0.05)] p-[8px] md:p-[10px] rounded-[9px] w-[36px] h-[36px] md:w-[42px] md:h-[42px] flex items-center justify-center">
-                <svg width="18" height="18" className="md:w-[22px] md:h-[22px]" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(capitalizeName(e.target.value))}
+              className="w-full bg-[#1b1c20] border border-[#121212] rounded-[10px] px-6 py-4 text-white text-sm font-medium font-inter tracking-[-0.16px] placeholder:text-gray-400 focus:outline-none focus:border-[#3a3a3a] transition-all"
+              autoComplete="name"
+            />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-[34px] h-[34px] bg-[rgba(217,217,217,0.05)] rounded-[7.286px] flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 9C10.6569 9 12 7.65685 12 6C12 4.34315 10.6569 3 9 3C7.34315 3 6 4.34315 6 6C6 7.65685 7.34315 9 9 9Z" fill="white"/>
+                <path d="M9 10.5C6.51472 10.5 4.5 12.5147 4.5 15H13.5C13.5 12.5147 11.4853 10.5 9 10.5Z" fill="white"/>
+              </svg>
             </div>
           </div>
           
-          {/* CTA Button with Conditional Background Container */}
+          {/* CTA Button - Always White Like Hero */}
           <div 
-            className="p-[2px] rounded-[8px] transition-all duration-300"
+            className="p-[2px] rounded-lg h-[50px] overflow-hidden"
             style={{
-              background: !isSubmitting && email.trim() && name.trim() 
-                ? "radial-gradient(50% 20.7% at 50% 100%, #C6FFFF 0%, rgba(198, 255, 255, 0.00) 100%)" 
-                : "transparent"
+              background: "radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)"
             }}
           >
             <button
               type="submit"
-              disabled={isSubmitting || !email.trim() || !name.trim()}
-              className={`w-full px-6 md:px-8 py-3 rounded-[8px] text-[14px] md:text-[16px] font-semibold tracking-[-0.16px] transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 group ${
-                isSubmitting || !email.trim() || !name.trim() 
-                  ? 'bg-gradient-to-b from-[#8a7259] to-[#6b5040] text-[#2a2a2a]' 
-                  : 'bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] text-[#000000] hover:opacity-90 hover:scale-[1.01] cursor-pointer'
-              }`}
-              style={{ fontFamily: "Inter" }}
+              disabled={isSubmitting}
+              className="relative z-50 w-full h-[46px] inline-flex items-center justify-center bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] text-[#000000] px-8 rounded-lg text-base font-semibold font-inter transition-all duration-300 hover:opacity-90 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
             >
               <span>{isSubmitting ? 'Generating Results...' : 'Get My Automation Plan'}</span>
-              <svg width="18" height="18" className="md:w-[22px] md:h-[22px] transform transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
+              {!isSubmitting && (
+                <svg
+                  className="ml-2 w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              )}
             </button>
           </div>
           
-          {error && (
-            <p className="text-red-400 text-xs md:text-sm text-center mt-4">{error}</p>
-          )}
-          
         </motion.form>
         
-        {/* Privacy note */}
-        <motion.p 
-          className="mt-4 md:mt-6 text-[10px] md:text-[12px] text-left tracking-[-0.32px] w-full max-w-[804px]"
+        {/* Privacy note with conditional validation message */}
+        <motion.div 
+          className="mt-4 md:mt-6 text-[10px] md:text-[12px] tracking-[-0.32px] w-full max-w-[804px] flex justify-between items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           style={{ fontFamily: "Inter" }}
         >
-          <span className="text-white">Avyra&rsquo;s respects your Privacy. </span>
-          <span className="text-[#d5dbe6]"> Unsubscribe anytime.</span>
-        </motion.p>
+          <p className="text-left">
+            <span className="text-white">Avyra respects your privacy. </span>
+            <span className="text-[#d5dbe6]">Unsubscribe anytime.</span>
+          </p>
+          {attemptedSubmit && (!email.trim() || !name.trim()) && (
+            <p className="text-[#9ca3af] text-right">
+              Please fill in all fields to continue.
+            </p>
+          )}
+        </motion.div>
         
       </div>
       
-      {/* Aggressive autofill override styles */}
+      {/* Autofill and focus override styles */}
       <style jsx global>{`
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active {
-          -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-          -webkit-text-fill-color: white !important;
-          background-color: transparent !important;
-          border: none !important;
-          outline: none !important;
-          transition: background-color 5000s ease-in-out 0s !important;
-        }
-        
-        input:-webkit-autofill::first-line {
-          color: white !important;
-          font-family: Inter, sans-serif !important;
-        }
-        
-        /* Force no borders on all input states */
-        input[type="email"],
-        input[type="text"] {
-          border: none !important;
+        .lead-capture-form input {
           outline: none !important;
           box-shadow: none !important;
           -webkit-appearance: none !important;
           -moz-appearance: none !important;
-          appearance: none !important;
         }
         
-        input[type="email"]:focus,
-        input[type="text"]:focus,
-        input[type="email"]:active,
-        input[type="text"]:active {
-          border: none !important;
+        .lead-capture-form input:focus {
           outline: none !important;
           box-shadow: none !important;
-          background: transparent !important;
+          ring: 0 !important;
         }
         
-        /* Simple placeholder override */
-        input::placeholder {
-          color: #6b7280 !important;
+        .lead-capture-form input:-webkit-autofill,
+        .lead-capture-form input:-webkit-autofill:hover,
+        .lead-capture-form input:-webkit-autofill:focus,
+        .lead-capture-form input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px #1b1c20 inset !important;
+          -webkit-text-fill-color: white !important;
+          background-color: #1b1c20 !important;
+          transition: background-color 5000s ease-in-out 0s !important;
+        }
+        
+        .lead-capture-form input:-webkit-autofill::first-line {
+          color: white !important;
+          font-family: Inter, sans-serif !important;
         }
       `}</style>
     </div>

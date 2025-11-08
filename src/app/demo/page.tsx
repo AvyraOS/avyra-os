@@ -3,14 +3,47 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 
+type Segment = 'foundation-builder' | 'system-optimizer' | 'sovereign-founder';
+
 export default function Demo() {
+  const searchParams = useSearchParams();
+  // Convert capitalized segment to lowercase for internal use
+  const segment = (searchParams.get('segment')?.toLowerCase() || 'foundation-builder') as Segment;
   const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useState<HTMLVideoElement | null>(null)[0]
+  
+  // Get CTA content based on segment
+  const getCTAContent = () => {
+    switch (segment) {
+      case 'foundation-builder':
+        return {
+          text: 'Download Founder Freedom Blueprint',
+          href: '/toolkit' // Lead magnet page
+        };
+      case 'system-optimizer':
+        return {
+          text: 'Join Free Founder\'s Circle (Skool)',
+          href: 'https://www.skool.com/avyra-5957/about?ref=62d9cf87b0794ed0aee7b54a40d9f199'
+        };
+      case 'sovereign-founder':
+        return {
+          text: 'Book a Call with Chase',
+          href: '/calendar' // VSL/booking page
+        };
+    }
+  };
+  
+  const ctaContent = getCTAContent();
 
   const handlePlayClick = () => {
     setIsPlaying(true)
-    // You can add actual video play logic here later
+    const videoElement = document.querySelector('video') as HTMLVideoElement
+    if (videoElement) {
+      videoElement.play()
+    }
   }
 
   return (
@@ -57,16 +90,19 @@ export default function Demo() {
         transition={{ duration: 0.8 }}
       >
         <div className="flex flex-col gap-6 items-center justify-start relative w-full">
-          {/* START SCALING Pill - Updated to match toolkit style */}
+          {/* START SCALING Pill - Matching landing page style */}
           <motion.div 
-            className="flex gap-2.5 items-center justify-start relative w-fit"
+            className="flex justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-1.5 md:space-x-2 bg-[#1a1b20] rounded-full px-3 md:px-4 py-1.5 md:py-2">
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] rounded-full" />
-              <span className="text-[#89FFFF] text-xs md:text-sm font-medium">START SCALING</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-[24px] bg-[#1b1c20]">
+              {/* Gradient dot */}
+              <div className="w-[6.9px] h-[6.9px] rounded-full bg-gradient-to-b from-[#FFFFFF] to-[#3B3B3B] shadow-[0px_1.15px_18.4px_0px_inset_rgba(255,255,255,0.12),0px_1.15px_1.15px_0px_inset_rgba(255,255,255,0.09)]"></div>
+              <span className="font-inter font-medium text-[14px] leading-[22px] tracking-[-0.14px] pill-text-gradient uppercase">
+                START SCALING
+              </span>
             </div>
           </motion.div>
 
@@ -107,22 +143,28 @@ export default function Demo() {
 
       {/* Video Player Container */}
       <motion.div 
-        className="relative z-10 mt-4 mb-4 md:mt-12 md:mb-12 w-[calc(100vw-32px)] md:w-[868px] h-[calc(100vh-320px-180px)] md:h-[402px] mx-auto"
+        className="relative z-10 mt-4 mb-4 md:mt-12 md:mb-12 w-[calc(100vw-32px)] md:w-[868px] mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.8 }}
       >
-        <div className="relative w-full h-full bg-[#393939] rounded-[16px] md:rounded-[27px] overflow-hidden">
-          {/* Video Content - Replace with actual video later */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-gray-400 text-sm md:text-base">Demo video coming soon...</p>
-          </div>
+        <div className="relative w-full bg-[#393939] rounded-[16px] md:rounded-[27px] overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          {/* Video Element */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            controls={isPlaying}
+            playsInline
+            preload="metadata"
+          >
+            <source src="/videos/AvyraAI_PraetorLeadGen.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           
           {/* Play Button */}
           {!isPlaying && (
             <button 
               onClick={handlePlayClick}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] md:w-[170px] md:h-[170px] group hover:scale-105 transition-transform duration-300"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] md:w-[170px] md:h-[170px] group hover:scale-105 transition-transform duration-300 z-10"
             >
               {/* Play Button Background */}
               <div className="absolute inset-0">
@@ -138,7 +180,7 @@ export default function Demo() {
                   height="100%" 
                   viewBox="0 0 58 58" 
                   fill="none"
-                  className="text-white group-hover:text-[#f2c6a6] transition-colors duration-300"
+                  className="text-white group-hover:text-white/80 transition-colors duration-300"
                 >
                   <path 
                     d="M22 17L38 29L22 41V17Z" 
@@ -176,15 +218,15 @@ export default function Demo() {
           <div 
             className="p-[2px] rounded-lg w-[calc(100vw-32px)] md:w-[550px] h-[50px] flex items-center justify-center overflow-hidden relative z-10"
             style={{
-              background: 'radial-gradient(50% 20.7% at 50% 100%, #C6FFFF 0%, rgba(198, 255, 255, 0.00) 100%)'
+              background: 'radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)'
             }}
           >
             <Link 
-              href="/intake"
-              className="w-full h-full bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] rounded-[8px] flex items-center justify-center gap-1.5 px-4 md:px-8 py-3 relative z-10 hover:from-[#9AFFFF] hover:to-[#10E7E7] transition-all duration-300"
+              href={ctaContent.href}
+              className="w-full h-full bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] rounded-[8px] flex items-center justify-center gap-1.5 px-4 md:px-8 py-3 relative z-10 hover:opacity-90 transition-all duration-300"
             >
               <span className="text-[#000000] text-[16px] font-semibold font-inter tracking-[-0.16px] leading-[20px]">
-                Book my Dream Discovery Call
+                {ctaContent.text}
               </span>
               <div className="w-[22px] h-[22px]">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -194,14 +236,6 @@ export default function Demo() {
             </Link>
           </div>
         </div>
-
-        {/* Secondary Link */}
-        <Link 
-          href="/settings/billing"
-          className="text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px] leading-[25.6px] text-center hover:text-[#f2c6a6] transition-colors duration-300"
-        >
-          View Plans & Pricing
-        </Link>
       </motion.div>
 
       {/* Custom Styles */}

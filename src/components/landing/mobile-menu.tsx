@@ -148,7 +148,7 @@ const MobileMenu = () => {
           {/* CTA Button at Bottom */}
           <div className="p-6 border-t border-white/10">
             <Link 
-              href="/calendar" 
+              href="/intake" 
               onClick={closeMobileMenu}
               className="block w-full group"
             >

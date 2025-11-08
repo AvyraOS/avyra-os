@@ -44,23 +44,22 @@ const CountingScore: React.FC<CountingScoreProps> = ({ targetScore, className, s
   );
 };
 
-// Type for form data from intake form
-type FormData = {
-  revenue: string;
-  timeAudit: string;
-  growthBlocker: string;
-  currentStack: string[];
-};
-
 // Segment type
-type Segment = 'immediate-buyer' | 'high-potential' | 'self-serve' | 'nurture-track';
+type Segment = 'foundation-builder' | 'system-optimizer' | 'sovereign-founder';
 
 interface ResultsPageProps {
-  formData: FormData;
+  formData: {
+    score: string;
+    segment: string;
+    name?: string;
+    email?: string;
+  };
 }
 
 export default function ResultsPage({ formData }: ResultsPageProps) {
-  const [segment, setSegment] = useState<Segment>('nurture-track');
+  const score = parseInt(formData.score) || 0;
+  // Convert capitalized segment to lowercase for internal use
+  const segment = (formData.segment?.toLowerCase() || 'foundation-builder') as Segment;
 
   // Helper function to get the appropriate radar SVG based on score
   const getRadarSvg = (score: number): string => {
@@ -117,25 +116,7 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
   //   return agentPriorities;
   // };
 
-  // Determine user segment based on form responses
-  useEffect(() => {
-    const { revenue, growthBlocker } = formData;
-    
-    // High urgency bottlenecks indicate immediate buyer behavior
-    const highUrgencyBlockers = ['not-enough-hours', 'systems-break', 'im-the-bottleneck'];
-    // Low urgency bottlenecks indicate exploration/planning mode
-    const lowUrgencyBlockers = ['team-cant-handle', 'manual-tasks'];
-    
-    if ((revenue === '100k-500k' || revenue === '500k-1m' || revenue === '1m-plus') && highUrgencyBlockers.includes(growthBlocker)) {
-      setSegment('immediate-buyer');
-    } else if ((revenue === '100k-500k' || revenue === '500k-1m' || revenue === '1m-plus') && lowUrgencyBlockers.includes(growthBlocker)) {
-      setSegment('high-potential');
-    } else if (revenue === '30k-100k') {
-      setSegment('self-serve');
-    } else {
-      setSegment('nurture-track');
-    }
-  }, [formData]);
+  // Segment is now passed directly from LeadCaptureGate based on calculated score
 
   // Animation variants
   const pageVariants = {
@@ -152,129 +133,73 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
 
   // Segment content
   const getSegmentContent = () => {
-    // const prioritizedAgents = getPrioritizedAgents(formData.currentStack || []);
-    
-    // Create features list with prioritized agents first
-    // const getAgentFeatures = () => {
-    //   return prioritizedAgents.slice(0, 3).map(agent => {
-    //     switch (agent) {
-    //       case 'AI Sales Director':
-    //         return '✓ AI Sales Director (saves 12 hrs/week)';
-    //       case 'AI Success Captain':
-    //         return '✓ AI Success Captain (saves 8 hrs/week)';
-    //       case 'AI Ops Commander':
-    //         return '✓ AI Ops Commander (saves 6 hrs/week)';
-    //       case 'AI Content Creator':
-    //         return '✓ AI Content Creator (saves 6 hrs/week)';
-    //       default:
-    //         return `✓ ${agent} (automates your workflow)`;
-    //     }
-    //   });
-    // };
-    
-    // const getAgentFeaturesSimple = () => {
-    //   return prioritizedAgents.slice(0, 3).map(agent => {
-    //     switch (agent) {
-    //       case 'AI Sales Director':
-    //         return '• AI Sales Director - Books meetings while you sleep';
-    //       case 'AI Success Captain':
-    //         return '• AI Success Captain - Keeps customers happy automatically';
-    //       case 'AI Ops Commander':
-    //         return '• AI Ops Commander - Handles the busywork';
-    //       case 'AI Content Creator':
-    //         return '• AI Content Creator - Posts in your voice daily';
-    //       default:
-    //         return `• ${agent} - Automates your workflow`;
-    //     }
-    //   });
-    // };
-    
     switch (segment) {
-      case 'immediate-buyer':
+      case 'foundation-builder':
         return {
-          score: 87,
-          title: "Reclaim $47,000/month with AI.",
-          subtitle: "Your business is ready to scale now.",
-          metrics: [
-            "Start Saving: 26 hrs/wk",
-            "Unlock: $19,400/mo",
-            "From: $997/mo"
+          title: `Your Freedom Score: ${score}%`,
+          subtitle: "Here's what it means — and what to do next.",
+          insights: [
+            {
+              label: "Time Leak",
+              text: "Most hours go to operations, leaving little room for growth."
+            },
+            {
+              label: "System Gap",
+              text: "Missing documented processes = recurring bottlenecks."
+            },
+            {
+              label: "Next Move",
+              text: "Start with the Founder Freedom Blueprint to build your foundation."
+            }
           ],
-          features: [
-            "• AI Sales Director (12 hrs/wk)",
-            "• AI Success Captain (8 hrs/wk)",
-            "• AI Content Creator (6 hrs/wk)",
-            "• AI Assistant (6 hrs/wk)"
-          ],
-          stats: [],
           buttons: [
-            { text: "Start Scaling", primary: true, href: "/demo" }
+            { text: "Continue", primary: true, href: `/demo?segment=foundation-builder` }
           ]
         };
       
-      case 'high-potential':
+      case 'system-optimizer':
         return {
-          score: 72,
-          title: "You're closer to freedom than you think.",
-          subtitle: "Here's your personalized AI Transformation Plan.",
-          metrics: [
-            "Reclaim 31+ hrs/wk",
-            "3.7x ROI in 6 months",
-            "Launch AI in 30 days"
+          title: `Your Freedom Score: ${score}%`,
+          subtitle: "Here's what it means — and what to do next.",
+          insights: [
+            {
+              label: "Time Leak",
+              text: "Still handling too many tasks that could be automated or delegated."
+            },
+            {
+              label: "System Gap",
+              text: "Systems exist but aren't optimized for scale."
+            },
+            {
+              label: "Next Move",
+              text: "Join the Founder's Circle to refine and scale faster."
+            }
           ],
-          features: [
-            "• AI Workforce Org Chart",
-            "• Personalized AutomationRoadmap",
-            "• Implementation Milestones",
-            "• 30-Day Launch Checklist"
-          ],
-          stats: [],
           buttons: [
-            { text: "See My Plan", primary: true, href: "/transformation-plan" }
+            { text: "Continue", primary: true, href: `/demo?segment=system-optimizer` }
           ]
         };
       
-      case 'self-serve':
+      case 'sovereign-founder':
         return {
-          score: 52,
-          title: "Break through your ceiling.",
-          subtitle: "Start with your first AI teammate today.",
-          metrics: [
-            "Start Saving: 15+ hrs/wk",
-            "Unlock: $8,500/mo",
-            "From: $997/mo"
+          title: `Your Freedom Score: ${score}%`,
+          subtitle: "Here's what it means — and what to do next.",
+          insights: [
+            {
+              label: "Time Leak",
+              text: "Minimal leaks—you've built strong systems."
+            },
+            {
+              label: "System Gap",
+              text: "Ready for strategic execution and team leverage."
+            },
+            {
+              label: "Next Move",
+              text: "Book a call with Chase to operate like a true CEO."
+            }
           ],
-          features: [
-            "• AI Sales Director (5 hrs/wk)",
-            "• AI Content Creator (5 hrs/wk)", 
-            "• AI Ops Commander (3 hrs/wk)",
-            "• AI Success Captain (4 hrs/wk)"
-          ],
-          stats: [],
           buttons: [
-            { text: "Choose My First Agent", primary: true, href: "/agents" }
-          ]
-        };
-      
-      case 'nurture-track':
-        return {
-          score: 41,
-          title: "You're building something worth scaling.",
-          subtitle: "Start here: your Founder Freedom Kit",
-          metrics: [
-            "Start Saving: 8 hrs/wk",
-            "Unlock: $3,200/mo", 
-            "Investment: $0 today"
-          ],
-          features: [
-            "• Founder Freedom Kit",
-            "• Founder's Community Circle",
-            "• Weekly Founder Frameworks",
-            "• AI Org Chart Template"
-          ],
-          stats: [],
-          buttons: [
-            { text: "Access Freedom Founders Kit", primary: true, href: "/toolkit" },
+            { text: "Continue", primary: true, href: `/demo?segment=sovereign-founder` }
           ]
         };
     }
@@ -342,8 +267,8 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
             {/* Radar SVG Background - Responsive */}
             <div className="relative flex items-center justify-center">
               <Image 
-                src={`/images/${getRadarSvg(content.score)}`}
-                alt={`${content.score}% Freedom Score`}
+                src={`/images/${getRadarSvg(score)}`}
+                alt={`${score}% Freedom Score`}
                 width={263}
                 height={263}
                 className="w-[193px] h-[193px] md:w-[263px] md:h-[263px]"
@@ -366,7 +291,7 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
                   
                   {/* Score Text with Counting Animation */}
                   <CountingScore 
-                    targetScore={content.score}
+                    targetScore={score}
                     className="text-[31px] md:text-[42px] font-bold font-['Inter'] text-center text-white relative z-10"
                     style={{
                       textShadow: '0 2px 8px rgba(0,0,0,0.5), 0 0 12px rgba(255,225,198,0.3)'
@@ -391,85 +316,25 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
             {content.title}
           </h1>
           
-          {/* Metrics Bar - Responsive */}
-          {content.metrics && content.metrics.length > 0 && (
-            <div className="w-full flex justify-center mb-8 md:mb-12 px-6 md:px-0">
-              <div className="relative">
-                <div 
-                  className="bg-[#080808] rounded-2xl border border-[rgba(216,231,242,0.07)] shadow-[0px_2px_1px_0px_inset_rgba(207,231,255,0.2)] pointer-events-none w-[345px] md:w-auto md:max-w-[760px] md:min-w-[320px] md:h-[51px] relative overflow-hidden"
+          {/* Three Insights */}
+          <div className="mb-8 md:mb-16 w-full max-w-[600px] px-6 md:px-0">
+            <div className="flex flex-col gap-6 md:gap-8">
+              {content.insights.map((insight, index) => (
+                <motion.div
+                  key={index}
+                  className="flex flex-col gap-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + index * 0.15 }}
                 >
-                  {/* Inner Glow Effect */}
-                  <div 
-                    className="absolute right-0 top-0 w-full h-full opacity-10 pointer-events-none z-0"
-                    style={{
-                      background: 'radial-gradient(ellipse 612px 260px at 95% 8%, rgba(184,199,217,0.5) 0%, rgba(184,199,217,0) 100%)'
-                    }}
-                  />
-                  
-                  {/* Mobile: Vertical Layout */}
-                  <div className="relative z-10 flex flex-col md:hidden gap-4 p-4">
-                    <div className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px]">
-                      <span className="text-[#d3ab8a] mr-2">✓</span>
-                      <span>{content.metrics[0]}</span>
-                    </div>
-                    <div className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px]">
-                      <span className="text-[#d3ab8a] mr-2">✓</span>
-                      <span>{content.metrics[1]}</span>
-                    </div>
-                    <div className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px]">
-                      <span className="text-[#d3ab8a] mr-2">✓</span>
-                      <span>{content.metrics[2]}</span>
-                    </div>
-                  </div>
-                  
-                  {/* Desktop: Horizontal Layout */}
-                  <div className="relative z-10 hidden md:flex items-center justify-center h-full px-8 gap-8">
-                    <span className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px] whitespace-nowrap">
-                      <span className="text-[#d3ab8a] mr-1">✓</span>
-                      {content.metrics[0]}
-                    </span>
-                    <span className="text-[rgba(213,219,230,0.3)] text-[16px]">|</span>
-                    <span className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px] whitespace-nowrap">
-                      <span className="text-[#d3ab8a] mr-1">✓</span>
-                      {content.metrics[1]}
-                    </span>
-                    <span className="text-[rgba(213,219,230,0.3)] text-[16px]">|</span>
-                    <span className="flex items-center text-[#d5dbe6] text-[16px] font-normal font-['Inter'] tracking-[-0.32px] whitespace-nowrap">
-                      <span className="text-[#d3ab8a] mr-1">✓</span>
-                      {content.metrics[2]}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Features List */}
-          <div className="mb-6 md:mb-16 w-full">
-              <div className={`w-full px-8 md:px-0 md:w-[660px] md:mx-auto ${content.score === 72 ? 'md:pl-8' : ''}`}>
-              <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-x-[60px] md:gap-y-[25px]">
-                {content.features.map((feature, index) => (
-                  <motion.div 
-                    key={index}
-                    className="flex items-start gap-[12px]"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                  >
-                    <div className="w-[26px] h-[26px] flex-shrink-0 mt-1">
-                      <Image 
-                        src="/icons/white-checkmark.svg"
-                        alt="Checkmark"
-                        width={26}
-                        height={26}
-                      />
-                    </div>
-                    <span className="text-[#d0d0d0] text-[14px] md:text-[18px] font-normal font-['Inter'] tracking-[-0.4913px] leading-[normal] md:leading-[28px]">
-                      {feature.replace(/^[✓•]\s*/, '')}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+                  <h3 className="text-white text-[14px] md:text-[16px] font-semibold font-['Inter'] uppercase tracking-[0.5px]">
+                    {insight.label}
+                  </h3>
+                  <p className="text-[#d5dbe6] text-[16px] md:text-[18px] font-normal font-['Inter'] leading-[1.6]">
+                    {insight.text}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
           
@@ -497,12 +362,12 @@ export default function ResultsPage({ formData }: ResultsPageProps) {
                   <div 
                     className="p-[2px] rounded-lg w-full md:w-[524px] mx-auto h-[50px] flex items-center justify-center overflow-hidden relative z-10"
                     style={{
-                      background: 'radial-gradient(50% 20.7% at 50% 100%, #C6FFFF 0%, rgba(198, 255, 255, 0.00) 100%)'
+                      background: 'radial-gradient(50% 20.7% at 50% 100%, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 100%)'
                     }}
                   >
                     <Link 
                       href={button.href}
-                      className="w-full h-full bg-gradient-to-b from-[#89FFFF] to-[#00D7D7] rounded-[8px] flex items-center justify-center gap-1.5 px-8 py-3 relative z-10"
+                      className="w-full h-full bg-gradient-to-b from-[#FFFFFF] to-[#F3F3F3] rounded-[8px] flex items-center justify-center gap-1.5 px-8 py-3 relative z-10"
                     >
                       <span className="text-[#000000] text-[16px] font-semibold font-inter tracking-[-0.16px] leading-[20px]">
                         {button.text}

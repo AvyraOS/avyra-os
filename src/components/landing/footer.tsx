@@ -119,7 +119,7 @@ const Footer = () => {
               >
                 {/* Button (Top Layer) */}
                 <Link 
-                  href="/calendar" 
+                  href="/intake" 
                   className="relative z-50 inline-flex items-center justify-center bg-[#f8f9fa] text-[#000000] px-8 rounded-lg text-base font-medium font-inter transition-all duration-300 hover:opacity-90 cursor-pointer h-[46px]"
                 >
                   <span>Start my free assessment</span>

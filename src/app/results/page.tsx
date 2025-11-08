@@ -25,15 +25,11 @@ function LoadingResults() {
 function ResultsContent() {
   const searchParams = useSearchParams();
   
-  // Parse form data from URL parameters
+  // Parse data from URL parameters (now simplified to score and segment)
   const formData = {
-    revenue: searchParams.get('revenue') || '',
-    timeAudit: searchParams.get('timeAudit') || '',
-    growthBlocker: searchParams.get('growthBlocker') || '',
-    urgency: searchParams.get('urgency') || '',
-    currentStack: searchParams.get('currentStack')?.split(',').filter(Boolean) || [],
-    // Optional contact info
-    firstName: searchParams.get('firstName') || undefined,
+    score: searchParams.get('score') || '0',
+    segment: searchParams.get('segment') || 'foundation-builder',
+    name: searchParams.get('name') || undefined,
     email: searchParams.get('email') || undefined
   };
 
